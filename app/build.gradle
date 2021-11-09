@@ -86,4 +86,7 @@ dependencies {
     //Pagination
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    //Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
