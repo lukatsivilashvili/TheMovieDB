@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
 
+        setSupportActionBar(binding.myToolBar)
+
         viewPager = binding.viewPager
         tabLayout = binding.tabLayout
 
@@ -35,8 +37,14 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
 
             when (position) {
-                0 -> tab.text = "Movies"
-                1 -> tab.text = "Shows"
+                0 -> {
+                    tab.text = "Movies"
+                    tab.setIcon(R.drawable.ic_movie)
+                }
+                1 -> {
+                    tab.text = "Shows"
+                    tab.setIcon(R.drawable.ic_shows)
+                }
             }
         }.attach()
 

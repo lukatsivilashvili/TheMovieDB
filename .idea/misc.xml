@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_baseline_tv_24.xml" value="0.5703125" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_movie.xml" value="0.5703125" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background.xml" value="0.38796296296296295" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background_average.xml" value="0.38796296296296295" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background_bad.xml" value="0.38796296296296295" />

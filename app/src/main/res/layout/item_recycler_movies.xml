@@ -25,6 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/poppins_light"
             android:id="@+id/tvReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +37,8 @@
             app:layout_constraintTop_toTopOf="@id/ivBackdrop" />
 
         <TextView
-            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_light"
+            android:layout_marginTop="10dp"
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,7 +46,7 @@
             android:layout_marginEnd="16dp"
             android:singleLine="true"
             android:textColor="@color/txt_light_purple"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -62,6 +64,7 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/ivBackdrop"
             app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/poppins_light"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/ivBackdrop" />
 
@@ -70,6 +73,7 @@
             android:layout_marginBottom="17dp"
             android:id="@+id/tvLanguage"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/poppins_light"
             android:layout_marginStart="16dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/tvRating"
