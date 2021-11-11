@@ -1,31 +1,31 @@
-package com.luka.themoviedb.adapters.moviesPagination
+package com.luka.themoviedb.adapters.moviesPagination.listPagination
 
 import android.util.Log.d
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.luka.themoviedb.BuildConfig
-import com.luka.themoviedb.models.movies.Result
+import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFinal
 import com.luka.themoviedb.retrofit.MovieListService
 import javax.inject.Inject
 
 class MoviesPagingDataSource @Inject constructor(private val repoImpl: MovieListService) :
-    PagingSource<Int, Result>() {
+    PagingSource<Int, MoviesListFinal>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, MoviesListFinal>): Int? {
         return state.anchorPosition
     }
 
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MoviesListFinal> {
 
         return try {
 
             val currentPage = params.key ?: 1
             val response = repoImpl.getMovies(BuildConfig.API_KEY, currentPage)
-            val responseData = mutableListOf<Result>()
-            val data = response.body()?.results ?: emptyList()
+            val responseData = mutableListOf<MoviesListFinal>()
+            val data = response.body()?.moviesListFinals ?: emptyList()
             responseData.addAll(data)
-            d("respPage", response.body()?.results.toString())
+            d("respPage", response.body()?.moviesListFinals.toString())
 
             LoadResult.Page(
                 data = responseData,

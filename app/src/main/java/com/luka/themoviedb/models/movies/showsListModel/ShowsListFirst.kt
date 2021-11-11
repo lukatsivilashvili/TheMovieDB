@@ -1,11 +1,11 @@
-package com.luka.themoviedb.models.movies
+package com.luka.themoviedb.models.movies.showsListModel
 
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieFinal(
+data class ShowsListFirst(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val results: List<Result>?
+    val showsListFinals: List<ShowsListFinal>?
 )

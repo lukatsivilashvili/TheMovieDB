@@ -1,32 +1,55 @@
 package com.luka.themoviedb.ui.shows.showsList
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.luka.themoviedb.R
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.luka.themoviedb.adapters.showsPagination.listPagination.ShowsListRecyclerAdapter
+import com.luka.themoviedb.base.BaseFragment
+import com.luka.themoviedb.databinding.ShowsListFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class ShowsListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ShowsListFragment()
+@AndroidEntryPoint
+class ShowsListFragment :
+    BaseFragment<ShowsListFragmentBinding>(ShowsListFragmentBinding::inflate) {
+
+    private val viewModel: ShowsListViewModel by viewModels()
+    private lateinit var myAdapter: ShowsListRecyclerAdapter
+
+    override fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
+        init()
     }
 
-    private lateinit var viewModel: ShowsListViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.shows_list_fragment, container, false)
+    private fun init() {
+        initRecycler()
+        observe()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ShowsListViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun initRecycler() {
+        myAdapter = ShowsListRecyclerAdapter(requireContext())
+
+        binding.myRecyclerShowsList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = myAdapter
+
+
+
+        }
+
+        myAdapter.addLoadStateListener {
+            binding.myProgressBarCharacters.isVisible = it.refresh is LoadState.Loading
+        }
     }
+
+    private fun observe() {
+        viewModel.showsList.observe(viewLifecycleOwner, {
+            myAdapter.submitData(lifecycle, it)
+        })
+    }
+
 
 }

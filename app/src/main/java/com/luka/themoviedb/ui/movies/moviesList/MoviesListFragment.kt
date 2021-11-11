@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.luka.themoviedb.adapters.moviesPagination.MoviesListRecyclerAdapter
+import com.luka.themoviedb.adapters.moviesPagination.listPagination.MoviesListRecyclerAdapter
 import com.luka.themoviedb.base.BaseFragment
 import com.luka.themoviedb.databinding.MoviesListFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,7 @@ class MoviesListFragment :
     private fun initRecycler() {
         myAdapter = MoviesListRecyclerAdapter(requireContext())
 
-        binding.myRecycler.apply {
+        binding.myRecyclerMoviesList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = myAdapter

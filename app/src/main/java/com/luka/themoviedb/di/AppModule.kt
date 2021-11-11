@@ -3,8 +3,12 @@ package com.luka.themoviedb.di
 import androidx.viewbinding.BuildConfig
 import com.luka.themoviedb.repository.movies.moviesList.MovieListRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MoviesListRepo
+import com.luka.themoviedb.repository.shows.showsList.ShowListRepo
+import com.luka.themoviedb.repository.shows.showsList.ShowListRepoImplement
 import com.luka.themoviedb.retrofit.MovieListService
-import com.luka.themoviedb.utils.Constants.BASE_URL
+import com.luka.themoviedb.retrofit.ShowsListService
+import com.luka.themoviedb.utils.Constants.BASE_URL_MOVIES
+import com.luka.themoviedb.utils.Constants.BASE_URL_SHOWS
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,7 +47,7 @@ class AppModule {
     @Singleton
     fun movieListService(): MovieListService =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_MOVIES)
             .addConverterFactory(GsonConverterFactory.create())
             .client(interceptorClient())
             .build()
@@ -54,4 +58,20 @@ class AppModule {
     @Singleton
     fun addMovieListRepo(movieListService: MovieListService): MoviesListRepo =
         MovieListRepoImplement(movieListService)
+
+    @Provides
+    @Singleton
+    fun showListService(): ShowsListService =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_SHOWS)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(interceptorClient())
+            .build()
+            .create(ShowsListService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun addShowListRepo(showListService: ShowsListService): ShowListRepo =
+        ShowListRepoImplement(showListService)
 }

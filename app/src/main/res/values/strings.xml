@@ -3,6 +3,7 @@
 
 
     <string name="releaseDate">Release Date: %1$s</string>
+    <string name="first_air_date">First Air Date: %1$s</string>
     <string name="rating">%1$s  %2$s</string>
 
     <string name="language">Language: %1$s</string>
