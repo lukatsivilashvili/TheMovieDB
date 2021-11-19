@@ -1,12 +1,15 @@
 package com.luka.themoviedb.di
 
 import androidx.viewbinding.BuildConfig
+import com.luka.themoviedb.repository.movies.moviesDetails.MoviesDetailsRepo
+import com.luka.themoviedb.repository.movies.moviesDetails.MoviesDetailsRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MovieListRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MoviesListRepo
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepo
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepoImplement
-import com.luka.themoviedb.retrofit.MovieListService
-import com.luka.themoviedb.retrofit.ShowsListService
+import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsService
+import com.luka.themoviedb.retrofit.moviesService.MoviesListService
+import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import com.luka.themoviedb.utils.Constants.BASE_URL_MOVIES
 import com.luka.themoviedb.utils.Constants.BASE_URL_SHOWS
 import dagger.Module
@@ -45,19 +48,41 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun movieListService(): MovieListService =
+    fun movieListService(): MoviesListService =
         Retrofit.Builder()
             .baseUrl(BASE_URL_MOVIES)
             .addConverterFactory(GsonConverterFactory.create())
             .client(interceptorClient())
             .build()
-            .create(MovieListService::class.java)
+            .create(MoviesListService::class.java)
 
 
     @Provides
     @Singleton
-    fun addMovieListRepo(movieListService: MovieListService): MoviesListRepo =
-        MovieListRepoImplement(movieListService)
+    fun addMovieListRepo(moviesListService: MoviesListService): MoviesListRepo =
+        MovieListRepoImplement(moviesListService)
+
+
+
+
+    @Provides
+    @Singleton
+    fun movieDetailsService(): MoviesDetailsService =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_MOVIES)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(interceptorClient())
+            .build()
+            .create(MoviesDetailsService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun addMovieDetailsRepo(moviesDetailsService: MoviesDetailsService): MoviesDetailsRepo =
+        MoviesDetailsRepoImplement(moviesDetailsService)
+
+
+
 
     @Provides
     @Singleton

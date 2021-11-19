@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luka.themoviedb.adapters.moviesPagination.listPagination.MoviesListRecyclerAdapter
 import com.luka.themoviedb.base.BaseFragment
 import com.luka.themoviedb.databinding.MoviesListFragmentBinding
+import com.luka.themoviedb.ui.NavHostFragmentDirections
+import com.luka.themoviedb.utils.OnItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,19 +31,22 @@ class MoviesListFragment :
     }
 
     private fun initRecycler() {
-        myAdapter = MoviesListRecyclerAdapter(requireContext())
+        myAdapter = MoviesListRecyclerAdapter(requireContext(), object : OnItemClickListener {
+            override fun clickItem(position: Int, id: String) {
+                val action =
+                    NavHostFragmentDirections.actionNavHostFragmentToMoviesDetailsFragment(id)
+                view?.let { Navigation.findNavController(it).navigate(action) }
+            }
+        })
 
-        binding.myRecyclerMoviesList.apply {
+        binding.rvMoviesList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = myAdapter
-
-
-
         }
 
         myAdapter.addLoadStateListener {
-            binding.myProgressBarCharacters.isVisible = it.refresh is LoadState.Loading
+            binding.pbMoviesList.isVisible = it.refresh is LoadState.Loading
         }
     }
 

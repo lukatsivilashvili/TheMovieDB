@@ -1,11 +1,9 @@
 package com.luka.themoviedb.repository.shows.showsList
 
 import com.luka.themoviedb.BuildConfig
-import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFirst
-import com.luka.themoviedb.models.movies.showsListModel.ShowsListFirst
-import com.luka.themoviedb.retrofit.MovieListService
+import com.luka.themoviedb.models.shows.showsListModel.ShowsListFirst
 import com.luka.themoviedb.retrofit.NetworkHandler
-import com.luka.themoviedb.retrofit.ShowsListService
+import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

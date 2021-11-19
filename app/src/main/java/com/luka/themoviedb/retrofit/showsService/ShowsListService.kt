@@ -1,7 +1,6 @@
-package com.luka.themoviedb.retrofit
+package com.luka.themoviedb.retrofit.showsService
 
-import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFirst
-import com.luka.themoviedb.models.movies.showsListModel.ShowsListFirst
+import com.luka.themoviedb.models.shows.showsListModel.ShowsListFirst
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

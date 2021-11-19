@@ -1,32 +1,55 @@
 package com.luka.themoviedb.ui.movies.moviesDetails
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.luka.themoviedb.R
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
+import com.luka.themoviedb.base.BaseFragment
+import com.luka.themoviedb.databinding.MoviesDetailsFragmentBinding
+import com.luka.themoviedb.extensions.loadImageDetails
+import com.luka.themoviedb.retrofit.NetworkHandler
+import dagger.hilt.android.AndroidEntryPoint
 
-class MoviesDetailsFragment : Fragment() {
+@AndroidEntryPoint
+class MoviesDetailsFragment :
+    BaseFragment<MoviesDetailsFragmentBinding>(MoviesDetailsFragmentBinding::inflate) {
 
-    companion object {
-        fun newInstance() = MoviesDetailsFragment()
+    private val viewModel: MoviesDetailsViewModel by viewModels()
+
+    override fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
+        init()
     }
 
-    private lateinit var viewModel: MoviesDetailsViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.movies_details_fragment, container, false)
+    private fun init() {
+        initDetails()
+        observes()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoviesDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    private fun initDetails() {
+        val args: MoviesDetailsFragmentArgs by navArgs()
+        val id = args.id
+
+        id?.toInt()?.let { viewModel.getMovieDetails(it) }
+
     }
+
+    private fun observes() {
+        viewModel.movieDetailsData.observe(viewLifecycleOwner, {
+            when(it){
+                is NetworkHandler.Success -> {
+                    binding.tvMovieDetailsTitle.text = it.data?.title
+                    binding.tvMovieDetailsOverview.text = it.data?.overview
+                    binding.ivMovieDetails.loadImageDetails(it.data?.urlGenerator())
+                    binding.pbMoviesDetails.visibility = View.GONE
+                }
+                is NetworkHandler.Error -> Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        })
+    }
+
 
 }

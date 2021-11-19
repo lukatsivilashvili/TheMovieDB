@@ -1,4 +1,4 @@
-package com.luka.themoviedb.models.movies.showsListModel
+package com.luka.themoviedb.models.shows.showsListModel
 
 
 import com.google.gson.annotations.SerializedName

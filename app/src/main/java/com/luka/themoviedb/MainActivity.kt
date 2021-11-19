@@ -11,42 +11,13 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        init()
     }
 
-    private fun init() {
 
-        setSupportActionBar(binding.myToolBar)
-
-        viewPager = binding.viewPager
-        tabLayout = binding.tabLayout
-
-        val viewPagerFragmentAdapter = ViewPagerAdapter(this)
-        viewPager.adapter = viewPagerFragmentAdapter
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-
-            when (position) {
-                0 -> {
-                    tab.text = "Movies"
-                    tab.setIcon(R.drawable.ic_movie)
-                }
-                1 -> {
-                    tab.text = "Shows"
-                    tab.setIcon(R.drawable.ic_shows)
-                }
-            }
-        }.attach()
-
-    }
 }

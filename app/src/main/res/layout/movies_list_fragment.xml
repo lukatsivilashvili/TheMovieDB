@@ -8,7 +8,7 @@
     tools:context=".ui.movies.moviesList.MoviesListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myRecyclerMoviesList"
+        android:id="@+id/rvMoviesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:id="@+id/myProgressBarCharacters"
+        android:id="@+id/pbMoviesList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

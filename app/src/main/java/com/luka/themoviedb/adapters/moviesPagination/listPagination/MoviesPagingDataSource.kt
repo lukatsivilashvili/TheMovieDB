@@ -1,14 +1,13 @@
 package com.luka.themoviedb.adapters.moviesPagination.listPagination
 
-import android.util.Log.d
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.luka.themoviedb.BuildConfig
 import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFinal
-import com.luka.themoviedb.retrofit.MovieListService
+import com.luka.themoviedb.retrofit.moviesService.MoviesListService
 import javax.inject.Inject
 
-class MoviesPagingDataSource @Inject constructor(private val repoImpl: MovieListService) :
+class MoviesPagingDataSource @Inject constructor(private val repoImpl: MoviesListService) :
     PagingSource<Int, MoviesListFinal>() {
 
     override fun getRefreshKey(state: PagingState<Int, MoviesListFinal>): Int? {
@@ -25,7 +24,6 @@ class MoviesPagingDataSource @Inject constructor(private val repoImpl: MovieList
             val responseData = mutableListOf<MoviesListFinal>()
             val data = response.body()?.moviesListFinals ?: emptyList()
             responseData.addAll(data)
-            d("respPage", response.body()?.moviesListFinals.toString())
 
             LoadResult.Page(
                 data = responseData,

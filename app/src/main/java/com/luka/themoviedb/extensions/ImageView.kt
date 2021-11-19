@@ -21,10 +21,17 @@ val shimmerDrawable = ShimmerDrawable().apply {
     setShimmer(shimmer)
 }
 
-fun ImageView.loadImage(url: String?) {
+fun ImageView.loadImageList(url: String?) {
     Glide.with(this.context)
         .load(url)
         .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
         .placeholder(shimmerDrawable)
-        .into(this);
+        .into(this)
+}
+
+fun ImageView.loadImageDetails(url: String?) {
+    Glide.with(this.context)
+        .load(url)
+        .placeholder(shimmerDrawable)
+        .into(this)
 }

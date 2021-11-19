@@ -1,13 +1,10 @@
 package com.luka.themoviedb.adapters.showsPagination.listPagination
 
-import android.util.Log.d
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.luka.themoviedb.BuildConfig
-import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFinal
-import com.luka.themoviedb.models.movies.showsListModel.ShowsListFinal
-import com.luka.themoviedb.retrofit.MovieListService
-import com.luka.themoviedb.retrofit.ShowsListService
+import com.luka.themoviedb.models.shows.showsListModel.ShowsListFinal
+import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import javax.inject.Inject
 
 class ShowsPagingDataSource @Inject constructor(private val repoImpl: ShowsListService) :
@@ -27,7 +24,6 @@ class ShowsPagingDataSource @Inject constructor(private val repoImpl: ShowsListS
             val responseData = mutableListOf<ShowsListFinal>()
             val data = response.body()?.showsListFinals ?: emptyList()
             responseData.addAll(data)
-            d("respPage", response.body()?.showsListFinals.toString())
 
             LoadResult.Page(
                 data = responseData,

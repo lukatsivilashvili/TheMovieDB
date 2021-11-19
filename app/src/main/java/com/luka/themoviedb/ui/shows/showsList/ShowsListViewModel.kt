@@ -5,7 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.luka.themoviedb.adapters.showsPagination.listPagination.ShowsPagingDataSource
-import com.luka.themoviedb.retrofit.ShowsListService
+import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
