@@ -1,4 +1,4 @@
-package com.luka.themoviedb.repository.movies.moviesDetails
+package com.luka.themoviedb.repository.movies.moviesDetails.details
 
 import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
 import com.luka.themoviedb.retrofit.NetworkHandler

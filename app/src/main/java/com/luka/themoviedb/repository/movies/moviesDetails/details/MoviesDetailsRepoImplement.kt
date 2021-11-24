@@ -1,4 +1,4 @@
-package com.luka.themoviedb.repository.movies.moviesDetails
+package com.luka.themoviedb.repository.movies.moviesDetails.details
 
 import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
 import com.luka.themoviedb.retrofit.NetworkHandler
@@ -23,16 +23,4 @@ class MoviesDetailsRepoImplement @Inject constructor(private val moviesDetailsSe
             }
         }
     }
-//        withContext(ioDispatcher) {
-//            try {
-//                val result = moviesDetailsService.getMoviesDetails(movieId = id)
-//                if (result.isSuccessful) {
-//                    NetworkHandler.Success(result.body()!!)
-//                } else {
-//                    NetworkHandler.Error("Request Failed")
-//                }
-//            } catch (e: Exception) {
-//                NetworkHandler.Error("Request Failed")
-//            }
-//        }
 }

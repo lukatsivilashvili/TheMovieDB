@@ -28,3 +28,7 @@ fun TextView.loadBackground(vote: Double?) {
         }
     }
 }
+
+fun TextView.quote(sample:String){
+    this.text = context.getString(R.string.quote, sample)
+}

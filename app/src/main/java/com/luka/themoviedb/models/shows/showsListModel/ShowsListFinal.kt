@@ -19,6 +19,6 @@ data class ShowsListFinal(
     val voteAverage: Double?
 ){
     fun urlGenerator(): String{
-        return Constants.BACKDROP_URL + posterPath
+        return Constants.IMAGE_URL_W500 + posterPath
     }
 }

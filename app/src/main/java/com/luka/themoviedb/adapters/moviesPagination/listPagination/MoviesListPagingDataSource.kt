@@ -7,7 +7,7 @@ import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFinal
 import com.luka.themoviedb.retrofit.moviesService.MoviesListService
 import javax.inject.Inject
 
-class MoviesPagingDataSource @Inject constructor(private val repoImpl: MoviesListService) :
+class MoviesListPagingDataSource @Inject constructor(private val repoImpl: MoviesListService) :
     PagingSource<Int, MoviesListFinal>() {
 
     override fun getRefreshKey(state: PagingState<Int, MoviesListFinal>): Int? {

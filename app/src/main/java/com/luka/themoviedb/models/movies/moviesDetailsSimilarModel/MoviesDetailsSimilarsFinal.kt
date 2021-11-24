@@ -1,46 +1,40 @@
-package com.luka.themoviedb.models.movies.moviesDetailsModel
+package com.luka.themoviedb.models.movies.moviesDetailsSimilarModel
 
 
 import com.google.gson.annotations.SerializedName
 import com.luka.themoviedb.utils.Constants
 
-data class MoviesDetailsFinal(
+data class MoviesDetailsSimilarsFinal(
+    @SerializedName("adult")
+    val adult: Boolean?,
     @SerializedName("backdrop_path")
     val backdropPath: String?,
+    @SerializedName("genre_ids")
+    val genreIds: List<Int>?,
     @SerializedName("id")
     val id: Int?,
     @SerializedName("original_language")
     val originalLanguage: String?,
+    @SerializedName("original_title")
+    val originalTitle: String?,
     @SerializedName("overview")
     val overview: String?,
+    @SerializedName("popularity")
+    val popularity: Double?,
     @SerializedName("poster_path")
-    val posterPath: Any?,
-    @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompany>?,
-    @SerializedName("genres")
-    val genres: List<Genre>?,
+    val posterPath: String?,
     @SerializedName("release_date")
     val releaseDate: String?,
-    @SerializedName("revenue")
-    val revenue: Int?,
-    @SerializedName("runtime")
-    val runtime: Int?,
-    @SerializedName("status")
-    val status: String?,
     @SerializedName("title")
     val title: String?,
     @SerializedName("video")
     val video: Boolean?,
     @SerializedName("vote_average")
     val voteAverage: Double?,
-    @SerializedName("tagline")
-    val tagline: String?
+    @SerializedName("vote_count")
+    val voteCount: Int?
 ){
-    fun urlBackdropGenerator(): String{
-        return Constants.IMAGE_URL_ORIGINAL + backdropPath
-    }
-
-    fun urlPosterGenerator(): String{
+    fun urlGenerator(): String{
         return Constants.IMAGE_URL_W500 + posterPath
     }
 }

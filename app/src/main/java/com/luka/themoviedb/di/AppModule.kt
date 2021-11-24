@@ -1,13 +1,16 @@
 package com.luka.themoviedb.di
 
 import androidx.viewbinding.BuildConfig
-import com.luka.themoviedb.repository.movies.moviesDetails.MoviesDetailsRepo
-import com.luka.themoviedb.repository.movies.moviesDetails.MoviesDetailsRepoImplement
+import com.luka.themoviedb.repository.movies.moviesDetails.details.MoviesDetailsRepo
+import com.luka.themoviedb.repository.movies.moviesDetails.details.MoviesDetailsRepoImplement
+import com.luka.themoviedb.repository.movies.moviesDetails.similar.MoviesDetailsSimilarRepo
+import com.luka.themoviedb.repository.movies.moviesDetails.similar.MoviesDetailsSimilarRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MovieListRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MoviesListRepo
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepo
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepoImplement
 import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsService
+import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsSimilarService
 import com.luka.themoviedb.retrofit.moviesService.MoviesListService
 import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import com.luka.themoviedb.utils.Constants.BASE_URL_MOVIES
@@ -63,8 +66,6 @@ class AppModule {
         MovieListRepoImplement(moviesListService)
 
 
-
-
     @Provides
     @Singleton
     fun movieDetailsService(): MoviesDetailsService =
@@ -82,6 +83,21 @@ class AppModule {
         MoviesDetailsRepoImplement(moviesDetailsService)
 
 
+    @Provides
+    @Singleton
+    fun movieDetailsSimilarService(): MoviesDetailsSimilarService =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_MOVIES)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(interceptorClient())
+            .build()
+            .create(MoviesDetailsSimilarService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun addMovieDetailsSimilarRepo(moviesDetailsSimilarService: MoviesDetailsSimilarService): MoviesDetailsSimilarRepo =
+        MoviesDetailsSimilarRepoImplement(moviesDetailsSimilarService)
 
 
     @Provides

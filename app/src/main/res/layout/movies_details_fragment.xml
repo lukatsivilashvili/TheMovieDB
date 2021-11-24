@@ -12,11 +12,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ivMovieDetails"
+            android:id="@+id/ivMovieDetailsBackdrop"
             android:layout_width="match_parent"
             android:layout_height="320dp"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,39 +25,92 @@
             android:id="@+id/ivMovieDetailsFade"
             android:layout_width="match_parent"
             android:layout_height="320dp"
-            android:scaleType="matrix"
             android:adjustViewBounds="true"
+            android:scaleType="matrix"
             android:src="@drawable/shape_details_gradient"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@id/ivMovieDetailsBackdrop"
+            app:layout_constraintStart_toStartOf="@id/ivMovieDetailsBackdrop"
+            app:layout_constraintTop_toTopOf="@id/ivMovieDetailsBackdrop" />
+
+        <ImageView
+            android:id="@+id/ivMovieDetailsPoster"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/ivMovieDetailsFade"
+            app:layout_constraintStart_toStartOf="@id/ivMovieDetailsFade" />
 
         <TextView
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            android:gravity="start"
             android:id="@+id/tvMovieDetailsTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_light"
-            android:textColor="@color/txt_light_purple"
-            android:textSize="30sp"
+            android:gravity="start"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivMovieDetails" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivMovieDetailsPoster"
+            app:layout_constraintTop_toTopOf="@id/ivMovieDetailsPoster" />
 
         <TextView
+            android:id="@+id/tvMoviesDetailsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/tvDetailsMargin16"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/poppins_light"
+            android:text="@string/description"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivMovieDetailsFade" />
+
+        <TextView
             android:id="@+id/tvMovieDetailsOverview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/tvDetailsMargin16"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:layout_marginEnd="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
             android:textColor="@color/txt_light_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDescription" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsTagline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/tvDetailsMargin16"
+            android:layout_marginEnd="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="start"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@id/ivMovieDetailsPoster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivMovieDetailsPoster" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/tvDetailsMargin16"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="start"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvMoviesDetailsTagline"
+            app:layout_constraintStart_toEndOf="@id/ivMovieDetailsPoster"
             app:layout_constraintTop_toBottomOf="@id/tvMovieDetailsTitle" />
 
         <ProgressBar
@@ -72,6 +125,105 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/details"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvMovieDetailsOverview"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieDetailsOverview" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/txt_light_purple"
+            android:textSize="@dimen/tvDetailsTextSize"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailHeader"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailHeader" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailGenres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/txt_light_purple"
+            android:textSize="@dimen/tvDetailsTextSize"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailReleaseDate"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailReleaseDate" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/txt_light_purple"
+            android:textSize="@dimen/tvDetailsTextSize"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailGenres"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailGenres" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailRuntime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/txt_light_purple"
+            android:textSize="@dimen/tvDetailsTextSize"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailStatus"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailStatus" />
+
+        <TextView
+            android:id="@+id/tvMoviesDetailsDetailRevenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/txt_light_purple"
+            android:textSize="@dimen/tvDetailsTextSize"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailRuntime"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailRuntime" />
+
+        <TextView
+            app:layout_constraintStart_toStartOf="@id/tvMoviesDetailsDetailRevenue"
+            android:id="@+id/tvMoviesDetailsSimilars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/more_like_this"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsDetailRevenue"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
+            app:layout_constraintEnd_toStartOf="@id/tvMoviesDetailsSimilars"
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsSimilars"
+            android:id="@+id/rvMoviesDetailsSimilar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

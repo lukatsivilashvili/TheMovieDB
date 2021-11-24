@@ -2,7 +2,7 @@ package com.luka.themoviedb.models.movies.moviesListModel
 
 
 import com.google.gson.annotations.SerializedName
-import com.luka.themoviedb.utils.Constants.BACKDROP_URL
+import com.luka.themoviedb.utils.Constants.IMAGE_URL_W500
 
 data class MoviesListFinal(
     @SerializedName("adult")
@@ -35,6 +35,6 @@ data class MoviesListFinal(
     val voteCount: Int?
 ){
     fun urlGenerator(): String{
-        return BACKDROP_URL + posterPath
+        return IMAGE_URL_W500 + posterPath
     }
 }
