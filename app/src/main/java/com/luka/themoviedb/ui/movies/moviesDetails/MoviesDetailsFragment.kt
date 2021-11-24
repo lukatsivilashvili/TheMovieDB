@@ -32,11 +32,11 @@ class MoviesDetailsFragment :
 
 
     override fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
+        setHasOptionsMenu(false)
         init()
     }
 
     private fun init() {
-
         initDetails()
         observes()
     }

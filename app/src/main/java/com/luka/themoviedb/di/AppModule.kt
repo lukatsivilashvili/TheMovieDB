@@ -7,13 +7,17 @@ import com.luka.themoviedb.repository.movies.moviesDetails.similar.MoviesDetails
 import com.luka.themoviedb.repository.movies.moviesDetails.similar.MoviesDetailsSimilarRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MovieListRepoImplement
 import com.luka.themoviedb.repository.movies.moviesList.MoviesListRepo
+import com.luka.themoviedb.repository.movies.moviesListSearch.MoviesListSearchRepo
+import com.luka.themoviedb.repository.movies.moviesListSearch.MoviesListSearchRepoImplement
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepo
 import com.luka.themoviedb.repository.shows.showsList.ShowListRepoImplement
 import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsService
 import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsSimilarService
+import com.luka.themoviedb.retrofit.moviesService.MoviesListSearchService
 import com.luka.themoviedb.retrofit.moviesService.MoviesListService
 import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import com.luka.themoviedb.utils.Constants.BASE_URL_MOVIES
+import com.luka.themoviedb.utils.Constants.BASE_URL_SEARCH_MOVIES
 import com.luka.themoviedb.utils.Constants.BASE_URL_SHOWS
 import dagger.Module
 import dagger.Provides
@@ -62,7 +66,24 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun addMovieListRepo(moviesListService: MoviesListService): MoviesListRepo =
+    fun addMovieListRepo(moviesListSearchService: MoviesListSearchService): MoviesListSearchRepo =
+        MoviesListSearchRepoImplement(moviesListSearchService)
+
+
+    @Provides
+    @Singleton
+    fun movieListSearchService(): MoviesListSearchService =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_SEARCH_MOVIES)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(interceptorClient())
+            .build()
+            .create(MoviesListSearchService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun addMovieListSearchRepo(moviesListService: MoviesListService): MoviesListRepo =
         MovieListRepoImplement(moviesListService)
 
 

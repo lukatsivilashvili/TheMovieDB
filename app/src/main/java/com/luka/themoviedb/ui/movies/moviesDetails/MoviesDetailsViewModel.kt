@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.paging.*
 import com.luka.themoviedb.adapters.moviesPagination.detailsPagination.MoviesDetailsSimilarDataSource
 import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
 import com.luka.themoviedb.models.movies.moviesDetailsSimilarModel.MoviesDetailsSimilarsFinal
@@ -44,7 +41,7 @@ class MoviesDetailsViewModel @Inject constructor(private val repoImplDetails: Mo
 
         val similarList = Pager(PagingConfig(pageSize = 1)) {
             MoviesDetailsSimilarDataSource(serviceSimilar, id)
-        }.liveData
+        }.liveData.cachedIn(viewModelScope)
 
         return similarList
     }

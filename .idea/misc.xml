@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_baseline_tv_24.xml" value="0.5703125" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_close.xml" value="0.5388888888888889" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_go.xml" value="0.5388888888888889" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_movie.xml" value="0.5703125" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/ic_search.xml" value="0.34739583333333335" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background.xml" value="0.38796296296296295" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background_average.xml" value="0.38796296296296295" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/drawable/rating_background_bad.xml" value="0.38796296296296295" />
@@ -23,6 +26,8 @@
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/layout/shimmer_placeholder_layout.xml" value="0.5541666666666667" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/layout/shows_details_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/layout/shows_list_fragment.xml" value="0.3302083333333333" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/menu-v26/main_menu.xml" value="0.553125" />
+        <entry key="..\:/aaGitRep/MobAppsLearning/TheMovieDB/app/src/main/res/menu/main_menu.xml" value="0.5" />
       </map>
     </option>
   </component>

@@ -13,7 +13,7 @@ import com.luka.themoviedb.databinding.FragmentNavHostBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBinding::inflate) {
+class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBinding::inflate){
 
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
@@ -24,7 +24,9 @@ class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBind
 
     private fun init() {
 
-        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.myToolBar)
+
+
+
 
         viewPager = binding.viewPager
         tabLayout = binding.tabLayout
@@ -47,5 +49,7 @@ class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBind
         }.attach()
 
     }
+
+
 
 }
