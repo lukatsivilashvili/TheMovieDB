@@ -19,19 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val actionBar: ActionBar? = supportActionBar
-
-        // Define ColorDrawable object and parse color
-        // using parseColor method
-        // with color hash code as its parameter
-
-        // Define ColorDrawable object and parse color
-        // using parseColor method
-        // with color hash code as its parameter
         val colorDrawable = ColorDrawable(Color.parseColor("#1D0035"))
-
-        // Set BackgroundDrawable
-
-        // Set BackgroundDrawable
         actionBar?.setBackgroundDrawable(colorDrawable)
     }
+
 }

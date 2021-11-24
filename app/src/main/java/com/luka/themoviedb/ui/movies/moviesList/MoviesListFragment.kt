@@ -16,6 +16,7 @@ import com.luka.themoviedb.adapters.moviesPagination.listPagination.MoviesListRe
 import com.luka.themoviedb.base.BaseFragment
 import com.luka.themoviedb.databinding.MoviesListFragmentBinding
 import com.luka.themoviedb.ui.NavHostFragmentDirections
+import com.luka.themoviedb.utils.NetworkCheck
 import com.luka.themoviedb.utils.OnItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +27,7 @@ class MoviesListFragment :
 
     private val viewModel: MoviesListViewModel by viewModels()
     private lateinit var myAdapter: MoviesListRecyclerAdapter
+    private lateinit var networkChecker: NetworkCheck
 
     override fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
         setHasOptionsMenu(true)
@@ -33,6 +35,7 @@ class MoviesListFragment :
     }
 
     private fun init() {
+        checkNetwork()
         initRecycler()
         observe()
     }
@@ -93,7 +96,7 @@ class MoviesListFragment :
             })
         }
 
-        if(query.isNullOrEmpty()){
+        if (query.isNullOrEmpty()) {
             observe()
         }
         return true
@@ -108,10 +111,21 @@ class MoviesListFragment :
             })
         }
 
-        if(newText.isNullOrEmpty()){
+        if (newText.isNullOrEmpty()) {
             observe()
         }
         return true
+    }
+
+    private fun checkNetwork() {
+        networkChecker = NetworkCheck(requireActivity().application)
+        networkChecker.observe(this, { isConnected ->
+            if (isConnected) {
+                observe()
+            } else {
+                showErrorDialog("Error", "No Network")
+            }
+        })
     }
 
 
