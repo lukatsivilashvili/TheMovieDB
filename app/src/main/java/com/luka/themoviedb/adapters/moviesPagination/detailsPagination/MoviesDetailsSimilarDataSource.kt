@@ -2,13 +2,12 @@ package com.luka.themoviedb.adapters.moviesPagination.detailsPagination
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.luka.themoviedb.BuildConfig
 import com.luka.themoviedb.models.movies.moviesDetailsSimilarModel.MoviesDetailsSimilarsFinal
 import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsSimilarService
 import javax.inject.Inject
 
 class MoviesDetailsSimilarDataSource @Inject constructor(
-    private val repoImpl: MoviesDetailsSimilarService,
+    private val moviesSimilarsService: MoviesDetailsSimilarService,
     private val id: Int
 ) :
     PagingSource<Int, MoviesDetailsSimilarsFinal>() {
@@ -24,7 +23,7 @@ class MoviesDetailsSimilarDataSource @Inject constructor(
 
             val currentPage = params.key ?: 1
             val response =
-                repoImpl.getMoviesDetailsSimilar(movieId = id, BuildConfig.API_KEY, currentPage)
+                moviesSimilarsService.getMoviesDetailsSimilar(movieId = id, currentPage)
             val responseData = mutableListOf<MoviesDetailsSimilarsFinal>()
             val data = response.body()?.moviesDetailsSimilarsFinals ?: emptyList()
             responseData.addAll(data)

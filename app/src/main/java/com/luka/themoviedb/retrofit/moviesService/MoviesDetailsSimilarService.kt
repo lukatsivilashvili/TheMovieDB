@@ -10,5 +10,9 @@ import retrofit2.http.Query
 interface MoviesDetailsSimilarService {
 
     @GET("{movie_id}/similar")
-    suspend fun getMoviesDetailsSimilar(@Path("movie_id") movieId: Int?, @Query("api_key") api_Key: String? = BuildConfig.API_KEY, @Query("page") page: Int): Response<MoviesDetailsSimilarsFirst>
+    suspend fun getMoviesDetailsSimilar(
+        @Path("movie_id") movieId: Int?,
+        @Query("page") page: Int? = 1,
+        @Query("api_key") api_Key: String? = BuildConfig.API_KEY
+    ): Response<MoviesDetailsSimilarsFirst>
 }

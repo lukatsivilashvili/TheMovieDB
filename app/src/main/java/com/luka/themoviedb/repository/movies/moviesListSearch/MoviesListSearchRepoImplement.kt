@@ -1,6 +1,5 @@
 package com.luka.themoviedb.repository.movies.moviesListSearch
 
-import com.luka.themoviedb.BuildConfig
 import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFirst
 import com.luka.themoviedb.retrofit.NetworkHandler
 import com.luka.themoviedb.retrofit.moviesService.MoviesListSearchService
@@ -16,7 +15,7 @@ class MoviesListSearchRepoImplement @Inject constructor(private val moviesSearch
     override suspend fun getMoviesSearchList(query: String): NetworkHandler<MoviesListFirst> =
         withContext(ioDispatcher) {
             try {
-                val result = moviesSearchListService.getMoviesSearch(BuildConfig.API_KEY,1, query)
+                val result = moviesSearchListService.getMoviesSearch(query)
                 if (result.isSuccessful) {
                     NetworkHandler.Success(result.body()!!)
                 } else {

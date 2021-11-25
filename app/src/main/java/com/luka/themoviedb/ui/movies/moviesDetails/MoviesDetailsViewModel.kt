@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.luka.themoviedb.adapters.moviesPagination.detailsPagination.MoviesDetailsSimilarDataSource
-import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
+import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetails
 import com.luka.themoviedb.models.movies.moviesDetailsSimilarModel.MoviesDetailsSimilarsFinal
 import com.luka.themoviedb.repository.movies.moviesDetails.details.MoviesDetailsRepoImplement
 import com.luka.themoviedb.retrofit.NetworkHandler
@@ -21,8 +21,8 @@ import javax.inject.Inject
 class MoviesDetailsViewModel @Inject constructor(private val repoImplDetails: MoviesDetailsRepoImplement, private val serviceSimilar: MoviesDetailsSimilarService) :
     ViewModel() {
 
-    private val _movieDetailsData = MutableLiveData<NetworkHandler<MoviesDetailsFinal>>()
-    val movieDetailsData: LiveData<NetworkHandler<MoviesDetailsFinal>>
+    private val _movieDetailsData = MutableLiveData<NetworkHandler<MoviesDetails>>()
+    val movieDetailsData: LiveData<NetworkHandler<MoviesDetails>>
         get() = _movieDetailsData
 
 

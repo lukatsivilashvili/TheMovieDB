@@ -7,7 +7,7 @@ import com.luka.themoviedb.models.shows.showsListModel.ShowsListFinal
 import com.luka.themoviedb.retrofit.showsService.ShowsListService
 import javax.inject.Inject
 
-class ShowsPagingDataSource @Inject constructor(private val repoImpl: ShowsListService) :
+class ShowsPagingDataSource @Inject constructor(private val showsListService: ShowsListService) :
     PagingSource<Int, ShowsListFinal>() {
 
     override fun getRefreshKey(state: PagingState<Int, ShowsListFinal>): Int? {
@@ -20,7 +20,7 @@ class ShowsPagingDataSource @Inject constructor(private val repoImpl: ShowsListS
         return try {
 
             val currentPage = params.key ?: 1
-            val response = repoImpl.getShows(BuildConfig.API_KEY, currentPage)
+            val response = showsListService.getShows(BuildConfig.API_KEY, currentPage)
             val responseData = mutableListOf<ShowsListFinal>()
             val data = response.body()?.showsListFinals ?: emptyList()
             responseData.addAll(data)

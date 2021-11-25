@@ -60,14 +60,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/tvDetailsMargin16"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
             android:fontFamily="@font/poppins_light"
             android:text="@string/description"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivMovieDetailsFade" />
+            app:layout_constraintTop_toBottomOf="@id/tvMoviesDetailsTagline" />
 
         <TextView
             android:id="@+id/tvMovieDetailsOverview"
@@ -88,14 +88,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/tvDetailsMargin16"
             android:layout_marginEnd="@dimen/tvDetailsMargin16"
+            android:layout_marginTop="@dimen/tvDetailsMargin16"
             android:fontFamily="@font/poppins_light"
             android:gravity="start"
             android:padding="4dp"
             android:textColor="@color/white"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="@id/ivMovieDetailsPoster"
+            app:layout_constraintTop_toBottomOf="@id/ivMovieDetailsPoster"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivMovieDetailsPoster" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvMoviesDetailsRating"
@@ -109,7 +110,7 @@
             android:padding="4dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tvMoviesDetailsTagline"
+            app:layout_constraintBottom_toBottomOf="@id/ivMovieDetailsPoster"
             app:layout_constraintStart_toEndOf="@id/ivMovieDetailsPoster"
             app:layout_constraintTop_toBottomOf="@id/tvMovieDetailsTitle" />
 

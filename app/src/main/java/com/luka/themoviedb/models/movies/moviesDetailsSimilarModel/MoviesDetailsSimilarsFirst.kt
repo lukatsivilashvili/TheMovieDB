@@ -7,9 +7,5 @@ data class MoviesDetailsSimilarsFirst(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val moviesDetailsSimilarsFinals: List<MoviesDetailsSimilarsFinal>?,
-    @SerializedName("total_pages")
-    val totalPages: Int?,
-    @SerializedName("total_results")
-    val totalResults: Int?
+    val moviesDetailsSimilarsFinals: List<MoviesDetailsSimilarsFinal>?
 )

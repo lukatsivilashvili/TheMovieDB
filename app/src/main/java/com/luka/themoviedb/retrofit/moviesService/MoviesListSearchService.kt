@@ -8,5 +8,9 @@ import retrofit2.http.Query
 
 interface MoviesListSearchService {
     @GET("movie")
-    suspend fun getMoviesSearch(@Query("api_key") api_key:String? = BuildConfig.API_KEY, @Query("page") page: Int, @Query("query") query:String) : Response<MoviesListFirst>
+    suspend fun getMoviesSearch(
+        @Query("query") query: String,
+        @Query("page") page: Int? = 1,
+        @Query("api_key") api_key: String? = BuildConfig.API_KEY
+    ): Response<MoviesListFirst>
 }

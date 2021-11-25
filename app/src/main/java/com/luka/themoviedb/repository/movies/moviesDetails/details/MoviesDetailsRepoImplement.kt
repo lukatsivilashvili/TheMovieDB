@@ -1,6 +1,6 @@
 package com.luka.themoviedb.repository.movies.moviesDetails.details
 
-import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
+import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetails
 import com.luka.themoviedb.retrofit.NetworkHandler
 import com.luka.themoviedb.retrofit.moviesService.MoviesDetailsService
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,7 +13,7 @@ class MoviesDetailsRepoImplement @Inject constructor(private val moviesDetailsSe
 
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    override suspend fun getMoviesDetails(id: Int): NetworkHandler<MoviesDetailsFinal> {
+    override suspend fun getMoviesDetails(id: Int): NetworkHandler<MoviesDetails> {
         return withContext(ioDispatcher) {
             try {
                 val result = moviesDetailsService.getMoviesDetails(movieId = id)

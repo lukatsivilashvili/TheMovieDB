@@ -23,11 +23,6 @@ class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBind
     }
 
     private fun init() {
-
-
-
-
-
         viewPager = binding.viewPager
         tabLayout = binding.tabLayout
 
@@ -47,7 +42,6 @@ class NavHostFragment : BaseFragment<FragmentNavHostBinding>(FragmentNavHostBind
                 }
             }
         }.attach()
-
     }
 
 

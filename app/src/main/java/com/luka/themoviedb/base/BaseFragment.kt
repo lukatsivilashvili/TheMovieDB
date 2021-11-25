@@ -24,7 +24,6 @@ abstract class BaseFragment<BIN : ViewBinding>(
     private var _binding: BIN? = null
     val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,7 +52,7 @@ abstract class BaseFragment<BIN : ViewBinding>(
 
         dialog.findViewById<Button>(R.id.btnDialogClose).text = getString(R.string.btnDialogClose)
         dialog.findViewById<Button>(R.id.btnDialogClose).setOnClickListener {
-            dialog.cancel()
+            activity?.finish()
         }
         dialog.show()
     }

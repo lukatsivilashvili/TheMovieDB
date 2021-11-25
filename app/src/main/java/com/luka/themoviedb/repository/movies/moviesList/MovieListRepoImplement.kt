@@ -1,6 +1,5 @@
 package com.luka.themoviedb.repository.movies.moviesList
 
-import com.luka.themoviedb.BuildConfig
 import com.luka.themoviedb.models.movies.moviesListModel.MoviesListFirst
 import com.luka.themoviedb.retrofit.NetworkHandler
 import com.luka.themoviedb.retrofit.moviesService.MoviesListService
@@ -18,7 +17,7 @@ class MovieListRepoImplement @Inject constructor(private val moviesListService: 
 
         withContext(ioDispatcher) {
             try {
-                val result = moviesListService.getMovies(BuildConfig.API_KEY,1)
+                val result = moviesListService.getMovies()
                 if (result.isSuccessful) {
                     NetworkHandler.Success(result.body()!!)
                 } else {

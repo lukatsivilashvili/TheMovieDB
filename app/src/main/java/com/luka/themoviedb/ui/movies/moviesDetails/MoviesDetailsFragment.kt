@@ -3,7 +3,6 @@ package com.luka.themoviedb.ui.movies.moviesDetails
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -18,7 +17,7 @@ import com.luka.themoviedb.extensions.loadBackground
 import com.luka.themoviedb.extensions.loadImageDetails
 import com.luka.themoviedb.extensions.loadImageList
 import com.luka.themoviedb.extensions.quote
-import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetailsFinal
+import com.luka.themoviedb.models.movies.moviesDetailsModel.MoviesDetails
 import com.luka.themoviedb.retrofit.NetworkHandler
 import com.luka.themoviedb.utils.OnItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,9 +46,7 @@ class MoviesDetailsFragment :
         val id = args.id
 
         initRecycler()
-
         id?.toInt()?.let { viewModel.getMovieDetails(it) }
-
     }
 
     private fun initRecycler() {
@@ -66,7 +63,6 @@ class MoviesDetailsFragment :
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
             adapter = myAdapter
-
             val snapper: SnapHelper = LinearSnapHelper()
             snapper.attachToRecyclerView(binding.rvMoviesDetailsSimilar)
         }
@@ -81,12 +77,11 @@ class MoviesDetailsFragment :
                 is NetworkHandler.Success -> {
                     setDescription(it)
                 }
-                is NetworkHandler.Error -> Toast.makeText(
-                    requireContext(),
-                    "Error While Retrieving Data",
-                    Toast.LENGTH_SHORT
+                is NetworkHandler.Error -> showErrorDialog(
+                    getString(R.string.detailsErrorDialogTitle), getString(
+                        R.string.detailsErrorDialogDescription
+                    )
                 )
-                    .show()
             }
         })
 
@@ -97,7 +92,7 @@ class MoviesDetailsFragment :
 
     }
 
-    private fun setDescription(info: NetworkHandler<MoviesDetailsFinal>) {
+    private fun setDescription(info: NetworkHandler<MoviesDetails>) {
         binding.tvMovieDetailsTitle.text = info.data?.title
         binding.tvMovieDetailsOverview.text = info.data?.overview
         binding.ivMovieDetailsBackdrop.loadImageDetails(info.data?.urlBackdropGenerator())
@@ -107,7 +102,7 @@ class MoviesDetailsFragment :
         if (info.data?.tagline != "") {
             info.data?.tagline?.let { it1 -> binding.tvMoviesDetailsTagline.quote(it1) }
         } else {
-            binding.tvMoviesDetailsTagline.text = ""
+            binding.tvMoviesDetailsTagline.visibility = View.GONE
         }
 
         binding.ivMovieDetailsPoster.loadImageList(info.data?.urlPosterGenerator())
@@ -124,7 +119,7 @@ class MoviesDetailsFragment :
         getGenres(info)
     }
 
-    private fun getGenres(info_genre: NetworkHandler<MoviesDetailsFinal>) {
+    private fun getGenres(info_genre: NetworkHandler<MoviesDetails>) {
         val genres = mutableListOf<String>()
         for (i in info_genre.data?.genres!!) {
             genres.add(i.name!!)

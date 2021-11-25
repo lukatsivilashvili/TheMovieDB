@@ -31,11 +31,11 @@ class MoviesListFragment :
 
     override fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
         setHasOptionsMenu(true)
+        checkNetwork()
         init()
     }
 
     private fun init() {
-        checkNetwork()
         initRecycler()
         observe()
     }

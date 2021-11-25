@@ -21,16 +21,13 @@ class ShowsListRecyclerAdapter(val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind() {
-
             val shows = getItem(absoluteAdapterPosition)
             binding.tvReleaseDate.text = context.getString(R.string.first_air_date, shows?.firstAirDate)
             binding.tvTitle.text = shows?.name
             binding.tvLanguage.text = context.getString(R.string.language, shows?.originalLanguage?.uppercase(Locale.getDefault()))
             binding.ivBackdrop.loadImageList(shows?.urlGenerator())
             binding.tvRating.loadBackground(shows?.voteAverage)
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

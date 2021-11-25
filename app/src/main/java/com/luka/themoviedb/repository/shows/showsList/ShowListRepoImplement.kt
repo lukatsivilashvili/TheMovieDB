@@ -1,6 +1,5 @@
 package com.luka.themoviedb.repository.shows.showsList
 
-import com.luka.themoviedb.BuildConfig
 import com.luka.themoviedb.models.shows.showsListModel.ShowsListFirst
 import com.luka.themoviedb.retrofit.NetworkHandler
 import com.luka.themoviedb.retrofit.showsService.ShowsListService
@@ -18,7 +17,7 @@ class ShowListRepoImplement @Inject constructor(private val showListService: Sho
 
         withContext(ioDispatcher) {
             try {
-                val result = showListService.getShows(BuildConfig.API_KEY, 1)
+                val result = showListService.getShows()
                 if (result.isSuccessful) {
                     NetworkHandler.Success(result.body()!!)
                 } else {

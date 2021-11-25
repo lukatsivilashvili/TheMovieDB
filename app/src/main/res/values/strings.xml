@@ -18,5 +18,7 @@
     <string name="more_like_this">More like this:</string>
     <string name="search">Search:</string>
     <string name="btnDialogClose">Close</string>
+    <string name="detailsErrorDialogTitle">Error While Retrieving Data.</string>
+    <string name="detailsErrorDialogDescription">Check network and try again.</string>
 
 </resources>
